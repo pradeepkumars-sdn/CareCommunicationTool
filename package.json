@@ -22,5 +22,15 @@
     "mongoose": "^6.4.3",
     "mongoose-aggregate-paginate-v2": "^1.0.6",
     "mongoose-paginate-v2": "^1.7.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pradeepkumars-sdn/CareCommunicationTool.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/pradeepkumars-sdn/CareCommunicationTool/issues"
+  },
+  "homepage": "https://github.com/pradeepkumars-sdn/CareCommunicationTool#readme"
 }
