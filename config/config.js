@@ -13,7 +13,10 @@ const config = {
       //   UserName: "DMEReferralSystem",
       //   Password: "345rtg34fr3e",
     },
+    SECRETKEY:"deepData"
   },
+
+
 };
 
 module.exports.get = function get(env) {

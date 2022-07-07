@@ -8,6 +8,7 @@ const admin = require("../../routes/admin");
 module.exports = {
   getAllNurses: getAllNurses,
   addUser: addUser,
+  
 };
 
 async function getAllNurses(req, res) {}
