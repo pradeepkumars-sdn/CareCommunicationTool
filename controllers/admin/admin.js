@@ -19,22 +19,22 @@ async function addUser(req, res) {
       res.json(constant.ALLREADY_EXIST, constant.USER_ALREADY_EXIST);
     } else {
       console.log(req.body);
-    //   if (req.body.userType === "superadmin") {
-    //     let adminData = new userModel();
-    //     adminData.name = req.body.name;
-    //     adminData.email = req.body.email;
-    //     adminData.userType = req.body.userType;
-    //     adminData.nursingCompany = req.body.nursingCompany;
-    //     adminData.contact = req.body.contact;
+      //   if (req.body.userType === "superadmin") {
+      //     let adminData = new userModel();
+      //     adminData.name = req.body.name;
+      //     adminData.email = req.body.email;
+      //     adminData.userType = req.body.userType;
+      //     adminData.nursingCompany = req.body.nursingCompany;
+      //     adminData.contact = req.body.contact;
 
-    //     await adminData.save((err, result) => {
-    //       if (err) {
-    //         res.json(constant.ERROR_CODE, constant.INTERNAL_ERROR);
-    //       } else {
-    //         res.json(constant.SUCCESS_CODE, constant.ADDED_SUCCESS, result);
-    //       }
-    //     });
-    //   }
+      //     await adminData.save((err, result) => {
+      //       if (err) {
+      //         res.json(constant.ERROR_CODE, constant.INTERNAL_ERROR);
+      //       } else {
+      //         res.json(constant.SUCCESS_CODE, constant.ADDED_SUCCESS, result);
+      //       }
+      //     });
+      //   }
       if (req.body.userType === "nursehome") {
         let nurseData = new userModel();
         nurseData.name = req.body.name;
@@ -42,10 +42,11 @@ async function addUser(req, res) {
         nurseData.userType = req.body.userType;
         nurseData.nursingCompany = req.body.nursingCompany;
         nurseData.contact = req.body.contact;
+        nurseData.password = req.body.password;
 
         await nurseData.save((err, result) => {
           if (err) {
-              console.log(err)
+            console.log(err);
             res.json(constant.ERROR_CODE, constant.INTERNAL_ERROR);
           } else {
             res.json(constant.SUCCESS_CODE, constant.ADDED_SUCCESS, result);
@@ -61,20 +62,39 @@ async function addUser(req, res) {
         // aslivingData.userType = req.body.userType;
         // aslivingData.gender = req.body.gender;
         // aslivingData.dob = req.body.dob;
-       
 
         await aslivingData.save((err, result) => {
           if (err) {
-              console.log(err)
+            console.log(err);
             res.json(constant.ERROR_CODE, constant.INTERNAL_ERROR);
           } else {
             res.json(constant.SUCCESS_CODE, constant.ADDED_SUCCESS, result);
           }
         });
       }
+
+      if (req.body.userType === "physician") {
+        let physician = new userModel();
+        physician.name = req.body.name;
+        physician.email = req.body.email;
+        physician.userType = req.body.userType;
+        physician.location = req.body.location;
+        physician.contact = req.body.contact;
+        physician.assistedLivings = req.body.assistedLivings;
+        physician.nurshingHome = req.body.nurshingHome;
+
+        await physician.save((err, result) => {
+          if (err) {
+            console.log(err);
+            res.json(constant.ERROR_CODE, constant.INTERNAL_ERROR);
+          } else {
+            res.json(constant.ADDED_SUCCESS, constant.SUCCESS_CODE, {data:result});
+          }
+        });
+      }
     }
   } catch (e) {
-      console.log("check", e)
-    res.json(constant.ERROR_CODE, constant.INTERNAL_ERROR);
+    console.log("check", e);
+    res.json(constant.ERROR_CODE, "something error");
   }
 }
